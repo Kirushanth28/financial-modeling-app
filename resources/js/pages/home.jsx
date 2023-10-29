@@ -6,30 +6,30 @@ import { BiSearch } from "react-icons/bi";
 
 const Home = () => {
 
-    const [formData, setFormData] = useState({
-        name: 'AAPL',
-    });
+    const [symbol, setSymbol] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (e, url) => {
+
+    const handleSubmit = (e, action) => {
         e.preventDefault();
-        Inertia.visit(`/${url}/${formData.name}`);
-        // Inertia.get(`/${url}/${formData.name}`, {
-        //     onSuccess: () => {
-        //       // Redirect to the desired page after successful login
-        //     },
-        //     onError:() => {
-        //     }
-        // });
-    };
+        
+        // Check if symbol is null or empty
+        if (!symbol) {
+            setErrorMessage('Please enter a company symbol');
+            return; // Prevent further execution
+        }
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-    };
+        // Reset error message
+        setErrorMessage('');
 
+        // Handle form submission based on the action (profile or quote)
+        if (action === 'profile') {
+            Inertia.visit('/company/profile/' + symbol);
+            
+        } else if (action === 'quote') {
+            Inertia.visit('/company/quote/' + symbol);
+        }
+    };
     return (
 
         <div className="bg-white">
@@ -48,42 +48,51 @@ const Home = () => {
                     />
 
                 </div>
-                
+
                 <div className="mx-auto max-w-2xl py-40 sm:pb-32 lg:py-32">
-                <img
-                    className="mx-auto h-24 w-auto mb-6"
-                    src={CompanyLogo}
-                    alt="Company Logo"
-                />
-                    <div className="search field">
-                        <div className="relative text-gray-600">
-                            <div className="absolute top-0 left-0 mt-4 ml-4">
-                                <BiSearch size={20} />
+                    <img
+                        className="mx-auto h-24 w-auto mb-6"
+                        src={CompanyLogo}
+                        alt="Company Logo"
+                    />
+                    <form onSubmit={handleSubmit}>
+                        <div className="search field">
+                            <div className="relative text-gray-600">
+                                <div className="absolute top-0 left-0 mt-4 ml-4">
+                                    <BiSearch size={20} />
+                                </div>
+                                <input
+                                    type="text"
+                                    value={symbol}
+                                    onChange={(e) => setSymbol(e.target.value)}
+                                    className="bg-white border rounded-full h-12 px-5 pl-12 text-sm focus:outline-none shadow-md w-full"
+                                    placeholder="Search by company symbol"
+                                />
                             </div>
-                            <input
-                                type="text"
-                                className="bg-white border rounded-full h-12 px-5 pl-12 text-sm focus:outline-none shadow-md w-full"
-                                placeholder="Search"
-                            />
                         </div>
-                    </div>
-                   
-                    <div className="text-center">
-                        <div className="mt-10 flex items-center justify-center gap-x-6">
-                            <InertiaLink
-                                href="#"
-                                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Get Company Profile <span aria-hidden="true">→</span>
-                            </InertiaLink>
-                            <InertiaLink
-                                href="#"
-                                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                            >
-                                Get Company Quote <span aria-hidden="true">→</span>
-                            </InertiaLink>
+
+                        <div className="text-center">
+                            <div className="mt-10 flex items-center justify-center gap-x-6">
+                                <button
+                                    type="submit"
+                                    onClick={(e) => handleSubmit(e, 'profile')}
+                                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Get Company Profile <span aria-hidden="true">→</span>
+                                </button>
+                                <button
+                                    type="submit"
+                                    onClick={(e) => handleSubmit(e, 'quote')}
+                                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                >
+                                    Get Company Quote <span aria-hidden="true">→</span>
+                                </button>
+                            </div>
+                            {errorMessage && (
+                            <p className="text-red-500 mt-2">{errorMessage}</p>
+                        )}
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div
                     className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -106,20 +115,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-{/* <div>
-      <h1>Home</h1>
-      <form>
-        <label>Company name</label>
-        <input
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-        />
-        <p></p>
-        <button type="button" onClick={e=>handleSubmit(e,'company-profile')}>Get Profile</button> <button type='button' onClick={e=>handleSubmit(e,'company-quote')}>Get Quote</button>
-      </form>
-
-      
-    </div> */}

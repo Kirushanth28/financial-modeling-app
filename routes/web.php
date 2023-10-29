@@ -24,7 +24,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     // Autheticated web routes
     Route::middleware('auth')->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
-        Route::get('/company-profile/{name}', 'CompanyController@getCompanyProfileDetails')->name('company-profile');
-        Route::get('/company-quote/{name}', 'CompanyController@getCompanyQuoteDetails')->name('company-quote');
+        Route::get('/company/profile/{name}', 'CompanyController@getCompanyProfileDetails')->name('company-profile');
+        Route::get('/company/quote/{name}', 'CompanyController@getCompanyQuoteDetails')->name('company-quote');
     });
 });
