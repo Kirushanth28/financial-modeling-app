@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    Inertia.post('/register', formData, {
+    Inertia.post('/login', formData, {
         onSuccess: () => {
           // Redirect to the desired page after successful login
           // Inertia.visit('/dashboard');

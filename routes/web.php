@@ -20,7 +20,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::get('/register','AuthController@showRegistrationPage');
     Route::post('/register','AuthController@register');
     Route::middleware('auth')->group(function () {
-        Route::get('/home', 'CompanyController@index')->name('home');
+        Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/company-profile/{name}', 'CompanyController@getCompanyProfileDetails')->name('company-profile');
         Route::get('/company-quote/{name}', 'CompanyController@getCompanyQuoteDetails')->name('company-quote');
     });
