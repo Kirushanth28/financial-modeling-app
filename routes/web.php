@@ -20,6 +20,8 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::post('/logout','AuthController@logout');
     Route::get('/register','AuthController@showRegistrationPage');
     Route::post('/register','AuthController@register');
+
+    // Autheticated web routes
     Route::middleware('auth')->group(function () {
         Route::get('/home', 'HomeController@index')->name('home');
         Route::get('/company-profile/{name}', 'CompanyController@getCompanyProfileDetails')->name('company-profile');
