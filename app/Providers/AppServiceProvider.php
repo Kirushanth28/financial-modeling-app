@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\FinancialModelingInterface;
+use App\Services\FinancialModelingService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+         // Bind FinancialModelingInterface to FinancialModelingService
+         $this->app->bind(FinancialModelingInterface::class, FinancialModelingService::class);
     }
 
     /**
