@@ -19,12 +19,12 @@ class CompanyController extends Controller
 
     public function getCompanyProfile($symbol) {
         $profile = $this->financialModelingService->getCompanyProfile($symbol);
-        return response()->json($profile);
+        return Inertia::render('companyprofile', ['profile' => $profile]);
     }
 
     public function getCompanyQuote($symbol) {
         $quote = $this->financialModelingService->getCompanyQuote($symbol);
-        return response()->json($quote);
+        return Inertia::render('companyquote', ['quote' => $quote]);
     }
 
 }
