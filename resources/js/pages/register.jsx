@@ -54,6 +54,7 @@ const Register = () => {
                 onChange={handleInputChange}
                 type="text"
                 required
+                placeholder="Enter Username"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
             </div>
@@ -73,6 +74,7 @@ const Register = () => {
                 type="email"
                 autoComplete="email"
                 required
+                placeholder="Enter Email Address"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
             </div>
@@ -93,6 +95,7 @@ const Register = () => {
                 onChange={handleInputChange}
                 autoComplete="current-password"
                 required
+                placeholder="Enter Password"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
             </div>
@@ -112,6 +115,7 @@ const Register = () => {
                 onChange={handleInputChange}
                 autoComplete="current-password"
                 required
+                placeholder="Enter Password Again"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
             </div>

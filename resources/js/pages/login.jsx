@@ -61,6 +61,7 @@ const Login = () => {
                             type="email"
                             autoComplete="email"
                             required
+                            placeholder="Enter Email Address"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 pl-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
                     </div>
@@ -74,14 +75,6 @@ const Login = () => {
                         >
                             Password
                         </label>
-                        <div className="text-sm">
-                            <a
-                                href="#"
-                                className="font-semibold text-indigo-600 hover:text-indigo-500"
-                            >
-                                Forgot password?
-                            </a>
-                        </div>
                     </div>
                     <div className="mt-2">
                         <input
@@ -91,6 +84,7 @@ const Login = () => {
                             onChange={handleInputChange}
                             autoComplete="current-password"
                             required
+                            placeholder="Enter Password"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 pl-3 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
                         />
                     </div>
