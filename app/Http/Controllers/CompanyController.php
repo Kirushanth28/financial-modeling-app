@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\FinancialModelingService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Services\FinancialModelingService;
+use App\Contracts\CacheInterface;
 
 class CompanyController extends Controller
 {
-    protected $financialModelingService;
+    private $financialModelingService;
+    private $cache;
 
-    public function __construct(FinancialModelingService $financialModelingService) {
+    public function __construct(FinancialModelingService $financialModelingService, CacheInterface $cache) {
         $this->financialModelingService = $financialModelingService;
+        $this->cache = $cache;
     }
 
     public function getCompanyProfile($symbol) {

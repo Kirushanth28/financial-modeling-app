@@ -7,7 +7,7 @@ use App\Contracts\CacheInterface;
 use Illuminate\Support\Facades\Http;
 
 class FinancialModelingService implements FinancialModelingInterface {
-    protected $cache;
+    private $cache;
 
     public function __construct(CacheInterface $cache) {
         $this->cache = $cache;
