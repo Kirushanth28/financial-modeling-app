@@ -17,7 +17,7 @@ Route::namespace('App\Http\Controllers')->group(function () {
     Route::get('/','AuthController@showLoginPage');
     Route::get('/login','AuthController@showLoginPage')->name('login');
     Route::post('/login','AuthController@login');
-    Route::post('/logout','AuthController@logout');
+    Route::get('/logout','AuthController@logout');
     Route::get('/register','AuthController@showRegistrationPage');
     Route::post('/register','AuthController@register');
 

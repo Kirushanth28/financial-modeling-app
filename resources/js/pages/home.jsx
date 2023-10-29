@@ -9,10 +9,6 @@ const Home = () => {
     const [symbol, setSymbol] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
-    const handleLogout = () => {
-        Inertia.post('/logout');
-    };
-
     const handleSubmit = (e, action) => {
         e.preventDefault();
 
@@ -36,14 +32,12 @@ const Home = () => {
     return (
 
         <>
-            <div className="mr-auto">
-                <button
-                    type="submit"
-                    onClick={handleLogout}
-                    className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            <div className="flex me-3 mt-3 z-50">
+                <InertiaLink href="/logout"
+                    className="ml-auto rounded-md z-50 bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                     Logout <span aria-hidden="true">→</span>
-                </button>
+                </InertiaLink>
             </div>
             <div className="bg-white">
                 <div className="relative isolate px-6 pt-14 lg:px-8">
