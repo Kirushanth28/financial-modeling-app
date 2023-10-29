@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Inertia\Inertia;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::namespace('App\Http\Controllers')->group(function () {
+    Route::get('/','AuthController@showLoginPage');
+    Route::get('/login','AuthController@showLoginPage')->name('login');
+    Route::post('/login','AuthController@login');
+    Route::get('/register','AuthController@showRegistrationPage');
+    Route::post('/register','AuthController@register');
+    Route::middleware('auth')->group(function () {
+        Route::get('/home', 'CompanyController@index')->name('home');
+        Route::get('/company-profile/{name}', 'CompanyController@getCompanyProfileDetails')->name('company-profile');
+        Route::get('/company-quote/{name}', 'CompanyController@getCompanyQuoteDetails')->name('company-quote');
+    });
 });
