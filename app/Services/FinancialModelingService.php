@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 class FinancialModelingService implements FinancialModelingInterface {
     private $cache;
+    private $options;
 
     public function __construct(CacheInterface $cache) {
         $this->cache = $cache;
@@ -20,7 +21,7 @@ class FinancialModelingService implements FinancialModelingInterface {
         if ($cachedData) {
             return $cachedData;
         }
-
+        $this->options['apikey'] = config('services.api.key');
         $response = Http::get("https://financialmodelingprep.com/api/v3/profile/$symbol");
         $data = $response->json();
         $this->cache->put($cacheKey, $data, 60); // Cache for 60 minutes

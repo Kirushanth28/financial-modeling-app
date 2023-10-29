@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
          // Bind FinancialModelingInterface to FinancialModelingService
          $this->app->bind(FinancialModelingInterface::class, FinancialModelingService::class);
+         // Bind CacheInterface to CacheService
          $this->app->bind(CacheInterface::class, CacheService::class);
     }
 
