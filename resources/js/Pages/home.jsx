@@ -56,7 +56,7 @@ const Home = () => {
 
                     </div>
 
-                    <div className="mx-auto max-w-2xl py-40 sm:pb-32 lg:py-32">
+                    <div className="mx-auto max-w-2xl md:py-40 sm:py-0 lg:py-32">
                         <img
                             className="mx-auto h-24 w-auto mb-6"
                             src={CompanyLogo}
@@ -79,18 +79,18 @@ const Home = () => {
                             </div>
 
                             <div className="text-center">
-                                <div className="mt-10 flex items-center justify-center gap-x-6">
+                                <div className="mt-10 grid grid-cols-2 gap-4">
                                     <button
                                         type="submit"
                                         onClick={(e) => handleSubmit(e, 'profile')}
-                                        className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        className="col-auto gap-y-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >
                                         Get Company Profile <span aria-hidden="true">→</span>
                                     </button>
                                     <button
                                         type="submit"
                                         onClick={(e) => handleSubmit(e, 'quote')}
-                                        className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                        className="col-auto rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                     >
                                         Get Company Quote <span aria-hidden="true">→</span>
                                     </button>

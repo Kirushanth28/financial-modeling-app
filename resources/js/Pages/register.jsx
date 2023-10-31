@@ -3,7 +3,7 @@ import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
 import CompanyLogo from "../../../public/images/company_logo.png";
 
-const Register = () => {
+const Register = ({errors}) => {
   const [formData, setFormData] = useState({
     email: '',
     name: '',
@@ -57,6 +57,7 @@ const Register = () => {
                 placeholder="Enter Username"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
+              {errors.name && <span className="text-red-600">{errors.name}</span>}
             </div>
           </div>
           <div>
@@ -77,6 +78,7 @@ const Register = () => {
                 placeholder="Enter Email Address"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
+              {errors.email && <span className="text-red-600">{errors.email}</span>}
             </div>
           </div>
 
@@ -98,6 +100,7 @@ const Register = () => {
                 placeholder="Enter Password"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
+              {errors.password && <span className="text-red-600">{errors.password}</span>}
             </div>
           </div>
           <div>
@@ -118,6 +121,7 @@ const Register = () => {
                 placeholder="Enter Password Again"
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 pl-3 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
               />
+              {errors.password_confirmation && <span className="text-red-600">{errors.password_confirmation}</span>}
             </div>
           </div>
           <div>

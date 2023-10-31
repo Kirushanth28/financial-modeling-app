@@ -3,7 +3,7 @@ import { Inertia } from '@inertiajs/inertia';
 import { InertiaLink } from '@inertiajs/inertia-react';
 import CompanyLogo from "../../../public/images/company_logo.png";
 
-const Login = () => {
+const Login = ({errors}) => {
     const [formData, setFormData] = useState({
         email_or_name: '',
         password: '',
@@ -17,7 +17,8 @@ const Login = () => {
                 // Redirect to the desired page after successful login
                 // Inertia.visit('/dashboard');
             },
-            onError: () => {
+            onError: (errors) => {
+                console.log(errors)
             }
         });
     };
@@ -64,6 +65,7 @@ const Login = () => {
                             placeholder="Enter Email Address"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 pl-3 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                         />
+                        {errors.email && <span className="text-red-600">{errors.email}</span>}
                     </div>
                 </div>
 
@@ -87,9 +89,15 @@ const Login = () => {
                             placeholder="Enter Password"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 pl-3 focus:ring-2 focus:ring-inset focus:ring-blue-900 sm:text-sm sm:leading-6"
                         />
+                        {errors.password && <span className="text-red-600">{errors.password}</span>}
                     </div>
                 </div>
-
+                
+                {errors.invalid_credentials &&
+                <div className='mt-1.5'>
+                    <span className="text-red-600">{errors.invalid_credentials}</span>
+                </div>
+                 }
                 <div>
                     <button
                         type="submit"
